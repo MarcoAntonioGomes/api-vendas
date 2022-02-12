@@ -28,6 +28,7 @@ class OrdersProducts {
 
   @Column()
   product_id: string;
+
   @Column('decimal')
   price: number;
 
