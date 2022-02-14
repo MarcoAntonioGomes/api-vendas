@@ -1,4 +1,5 @@
 import AppError from '@shared/errors/AppError';
+import { instanceToInstance } from 'class-transformer';
 import { Request, Response } from 'express';
 import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
 
@@ -12,7 +13,7 @@ export default class UserAvatarController {
         user_id: request.user.id,
         avatarFilename: filename,
       });
-      return response.json(user);
+      return response.json(instanceToInstance(user));
     } else {
       throw new AppError('Avatar File Inexist!');
     }
