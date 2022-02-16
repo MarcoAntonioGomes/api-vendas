@@ -1,5 +1,5 @@
 import { getCustomRepository } from 'typeorm';
-import Customer from '../typeorm/entities/Customers';
+import Customer from '../typeorm/entities/Customer';
 import CustomersRepository from '../typeorm/repositories/CustomersRepository';
 
 interface IPaginationCustomer {
