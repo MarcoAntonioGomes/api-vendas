@@ -28,6 +28,9 @@ app.use(
         message: error.message,
       });
     }
+
+    console.log(error); //Utilizar somente em ambiente de DEV
+
     return response.status(500).json({
       status: 'error',
       message: 'Internal server error',
