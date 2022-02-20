@@ -7,6 +7,7 @@ class RedisCache {
 
   constructor() {
     if (!this.connected) {
+      console.log(cacheConfig.config.redis);
       this.client = new Redis(cacheConfig.config.redis);
       this.connected = true;
     }
