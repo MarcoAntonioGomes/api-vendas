@@ -1,5 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config();
 import 'reflect-metadata';
-import 'dotenv/config';
 import express, { NextFunction, Request, response, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
