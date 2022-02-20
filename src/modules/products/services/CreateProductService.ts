@@ -3,6 +3,7 @@ import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import Product from '../typeorm/entities/Product';
 import { ProductRepository } from '../typeorm/entities/repositories/ProductsRepository';
+import cacheConfig from '@config/cache';
 
 interface IRequest {
   name: string;
@@ -17,6 +18,8 @@ class CreateProductService {
     if (productExists) {
       throw new AppError('There is already one product with this name');
     }
+
+    redisCache.init(cacheConfig);
 
     await redisCache.invalidate('api-vendas-PRODUCT_LIST');
 

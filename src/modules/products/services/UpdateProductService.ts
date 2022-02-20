@@ -3,6 +3,7 @@ import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import Product from '../typeorm/entities/Product';
 import { ProductRepository } from '../typeorm/entities/repositories/ProductsRepository';
+import cacheConfig from '@config/cache';
 
 interface IRequest {
   id: string;
@@ -33,6 +34,8 @@ class UpdateProductService {
     product.name = name;
     product.price = price;
     product.quantity = quantity;
+
+    redisCache.init(cacheConfig);
 
     await redisCache.invalidate('api-vendas-PRODUCT_LIST');
 

@@ -1,13 +1,18 @@
-import Redis, { Redis as RedisClient } from 'ioredis';
-import cacheConfig from '@config/cache';
+import Redis, { Redis as RedisClient, RedisOptions } from 'ioredis';
+
+interface ICacheConfig {
+  config: {
+    redis: RedisOptions;
+  };
+  driver: string;
+}
 
 class RedisCache {
   private client: RedisClient;
   private connected = false;
 
-  constructor() {
+  public init(cacheConfig: ICacheConfig): void {
     if (!this.connected) {
-      console.log(process.env);
       this.client = new Redis(cacheConfig.config.redis);
       this.connected = true;
     }
