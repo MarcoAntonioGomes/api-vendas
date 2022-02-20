@@ -1,7 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config();
+import 'dotenv/config';
+import express from 'express';
 import 'reflect-metadata';
-import express, { NextFunction, Request, response, Response } from 'express';
+import { NextFunction, Request, response, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
 import routes from './routes';
@@ -37,5 +37,6 @@ app.use(
 );
 
 app.listen(3333, () => {
+  console.log(process.env);
   console.log('Server started on port 3333!');
 });
