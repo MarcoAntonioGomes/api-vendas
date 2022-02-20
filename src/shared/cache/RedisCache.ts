@@ -7,7 +7,6 @@ class RedisCache {
 
   constructor() {
     if (!this.connected) {
-      console.log(cacheConfig.config.redis);
       this.client = new Redis(cacheConfig.config.redis);
       this.connected = true;
     }
@@ -19,11 +18,14 @@ class RedisCache {
 
   public async recover<T>(key: string): Promise<T | null> {
     const data = await this.client.get(key);
+
     if (!data) {
       return null;
     }
-    const parseData = JSON.parse(data) as T;
-    return parseData;
+
+    const parsedData = JSON.parse(data) as T;
+
+    return parsedData;
   }
 
   public async invalidate(key: string): Promise<void> {
