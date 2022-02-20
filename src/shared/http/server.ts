@@ -37,6 +37,5 @@ app.use(
 );
 
 app.listen(3333, () => {
-  console.log(`Redis Password is ${process.env.REDIS_PASS}.`);
   console.log('Server started on port 3333!');
 });
