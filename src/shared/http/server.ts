@@ -29,7 +29,7 @@ app.use(
         message: error.message,
       });
     }
-    console.log(`Password is ${process.env.password}.`);
+    console.log(`Redis Password is ${process.env.REDIS_PASS}.`);
 
     return response.status(500).json({
       status: 'error',
