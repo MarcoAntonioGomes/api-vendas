@@ -29,8 +29,6 @@ app.use(
         message: error.message,
       });
     }
-    console.log(`Redis Password is ${process.env.REDIS_PASS}.`);
-
     return response.status(500).json({
       status: 'error',
       message: 'Internal server error',
@@ -39,5 +37,6 @@ app.use(
 );
 
 app.listen(3333, () => {
+  console.log(`Redis Password is ${process.env.REDIS_PASS}.`);
   console.log('Server started on port 3333!');
 });
