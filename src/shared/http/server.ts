@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import 'dotenv/config';
+require('dotenv/config');
 import express, { NextFunction, Request, response, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
@@ -28,6 +29,7 @@ app.use(
         message: error.message,
       });
     }
+    console.log(`Password is ${process.env.password}.`);
 
     return response.status(500).json({
       status: 'error',
