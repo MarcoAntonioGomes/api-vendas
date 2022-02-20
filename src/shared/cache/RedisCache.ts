@@ -1,4 +1,5 @@
 import Redis, { Redis as RedisClient } from 'ioredis';
+import cacheConfig from '@config/cache';
 
 class RedisCache {
   private client: RedisClient;
@@ -6,11 +7,8 @@ class RedisCache {
 
   constructor() {
     if (!this.connected) {
-      this.client = new Redis({
-        host: process.env.REDIS_HOST,
-        port: parseInt(process.env.REDIS_PORT || '6379'),
-        password: process.env.REDIS_PASS,
-      });
+      console.log(cacheConfig.config.redis);
+      this.client = new Redis(cacheConfig.config.redis);
       this.connected = true;
     }
   }
